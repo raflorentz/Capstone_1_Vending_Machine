@@ -35,10 +35,10 @@ public class InventoryReader {
             String category = vendItem[3];
 
 
-            if (category.equals("Chips")) {
+            if (category.equals("Chip")) {
                 Chips chips = new Chips(itemForSale, itemPrice);
                 displayList.add(chips);
-            } else if (category.equals("Beverages")) {
+            } else if (category.equals("Drink")) {
                 Beverages beverages = new Beverages(itemForSale, itemPrice);
                 displayList.add(beverages);
             } else if (category.equals("Gum")) {
@@ -50,6 +50,7 @@ public class InventoryReader {
 
             }
         }
+
         return displayList;
     }
 }

@@ -26,18 +26,23 @@ public class UserInterface {
         System.out.println("(1) Display Vending Machine Items");
         System.out.println("(2) Purchase");
         System.out.println("(3) Exit");
-
+        InventoryReader inventoryReader = new InventoryReader();
 
 
 
         Scanner mainMenuChoice = new Scanner(System.in);
+
 
         try {
             while (true) {
                 String input = mainMenuChoice.nextLine();
                 if (input.equals("1")) {
                     //break;
-                    //call stockList
+                    inventoryReader.createDisplayList();
+                    for (StockItem eachLine: inventoryReader.createDisplayList()) {
+                        //look up how to access an object within the list
+                        System.out.println(eachLine);
+                    }
                 } else if (input.equals("2")) {
                     System.out.println("you chose 2");
                     //break;
