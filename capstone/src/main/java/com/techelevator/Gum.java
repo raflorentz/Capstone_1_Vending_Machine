@@ -2,12 +2,12 @@ package com.techelevator;
 
 import java.math.BigDecimal;
 
-public class Gum extends StockItems{
+public class Gum extends StockItem {
 
     String sound = "Chew Chew, Yum!";
 
-    public Gum(String itemForSale, BigDecimal itemPrice, String slotIdentifier, Integer numberInStock) {
-        super(itemForSale, itemPrice, slotIdentifier, numberInStock);
+    public Gum(String itemForSale, BigDecimal itemPrice) {
+        super(itemForSale, itemPrice);
     }
 
     public String getSound() {

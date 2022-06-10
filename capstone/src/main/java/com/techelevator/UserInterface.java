@@ -26,22 +26,33 @@ public class UserInterface {
         System.out.println("(1) Display Vending Machine Items");
         System.out.println("(2) Purchase");
         System.out.println("(3) Exit");
-        Scanner mainMenuChoice = new Scanner(System.in);
-        mainMenuChoice.nextLine();
 
-        while (true) {
-            if (mainMenuChoice.equals("1")) {
-                //call stockList
-            } else if (mainMenuChoice.equals("2")) {
-                //move to purchase
-            } else if (mainMenuChoice.equals("3")) {
-                //exit transaction
-            } else {
-                System.out.println("Invalid option selected. Please use a number to select your option");
-                continue;
+
+
+
+        Scanner mainMenuChoice = new Scanner(System.in);
+
+        try {
+            while (true) {
+                String input = mainMenuChoice.nextLine();
+                if (input.equals("1")) {
+                    //break;
+                    //call stockList
+                } else if (input.equals("2")) {
+                    System.out.println("you chose 2");
+                    //break;
+                    //move to purchase
+                } else if (input.equals("3")) {
+                    System.out.println("Thank you for playing");
+                   // break;//exit transaction
+                } else {
+                    System.out.println("ugh...this again?? select a NUMBER, 1, 2 or 3.");
+
+                }
             }
 
-
+        } catch (Exception e) {
+            System.out.println("ugh...this again?? select a NUMBER, 1, 2 or 3.");
         }
 
     }
