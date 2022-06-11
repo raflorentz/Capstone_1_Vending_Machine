@@ -6,7 +6,7 @@ public class StockItem {
 
    public String itemForSale;
     public BigDecimal itemPrice;
-    public Integer numberInStock;
+    public static Integer numberInStock;
      public String sound;
 
     public StockItem(String itemForSale, BigDecimal itemPrice) {
@@ -20,7 +20,14 @@ public class StockItem {
     //a for loop that decrements the inventory each time one is purchased.
     //When the last item in a stock has been bought, the next attempt should return an Out of Stock error.
     //for (int i = 5; i > 0; i--)
-
+    public void dispenseItem() {
+        if(StockItem.getNumberInStock()  >= 1) {
+            numberInStock--;
+            System.out.println(getSound());
+        } else {
+            System.out.println("SOLD OUT");
+        }
+        }
 
     public String getSound() {
         return sound;
@@ -35,7 +42,7 @@ public class StockItem {
     }
 
 
-    public Integer getNumberInStock() {
+    public static Integer getNumberInStock() {
         return numberInStock;
     }
 

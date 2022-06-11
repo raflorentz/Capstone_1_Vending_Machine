@@ -27,7 +27,7 @@ public class UserInterface {
         System.out.println("(2) Purchase");
         System.out.println("(3) Exit");
         InventoryReader inventoryReader = new InventoryReader();
-
+         //MoneyHandler moneyHandler = new MoneyHandler();
 
 
         Scanner mainMenuChoice = new Scanner(System.in);
@@ -38,14 +38,14 @@ public class UserInterface {
                 String input = mainMenuChoice.nextLine();
                 if (input.equals("1")) {
                     //break;
-                    inventoryReader.createDisplayList();
-                    for (StockItem eachLine: inventoryReader.createDisplayList()) {
-                        //look up how to access an object within the list
+                    inventoryReader.createStockList();
+                    for (String eachLine: inventoryReader.createStockList()) {
                         System.out.println(eachLine);
+
                     }
                 } else if (input.equals("2")) {
-                    System.out.println("you chose 2");
-                    //break;
+                    System.out.println("Enter Slot ID");
+
                     //move to purchase
                 } else if (input.equals("3")) {
                     System.out.println("Thank you for playing");

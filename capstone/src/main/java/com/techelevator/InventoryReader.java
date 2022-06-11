@@ -12,7 +12,7 @@ public class InventoryReader {
 
     private File inventoryFile = new File("vendingmachine.csv");
 
-    private List<String> createStockList() {
+    public List<String> createStockList() {
         List<String> stockList = new ArrayList<String>();
         try (Scanner fileImporter = new Scanner(inventoryFile)) {
             while (fileImporter.hasNextLine()) {
@@ -24,7 +24,7 @@ public class InventoryReader {
         return stockList;
     }
 
-    public List<StockItem> createDisplayList() {
+    private List<StockItem> createDisplayList() {
         List<StockItem> displayList = new ArrayList<>();
         for (String itemListing : createStockList()) {
             String[] vendItem = itemListing.split("\\|");

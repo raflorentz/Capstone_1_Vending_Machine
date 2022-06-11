@@ -28,11 +28,9 @@ public class MoneyHandler {
         totalBalance = totalBalance.add(amountToDeposit);
     }
 
-    public void refundedMoney() {
-        BigDecimal amountRefunded = totalBalance.subtract(transactionTotal);
-    }
 
-    public String makeChange(BigDecimal totalBalance){
+
+    public String refundedMoney(BigDecimal totalBalance){
         BigDecimal calculator = totalBalance;
 
         while (calculator.compareTo(BigDecimal.ZERO) > 0) {
