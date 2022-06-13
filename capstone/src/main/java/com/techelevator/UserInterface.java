@@ -37,38 +37,38 @@ public class UserInterface {
             while (true) {
                 String input = mainMenuChoice.nextLine();
                 if (input.equals("1")) {
-                    //break;
                     inventoryReader.createStockList();
                     for (String eachLine: inventoryReader.createStockList()) {
                         System.out.println(eachLine);
-
                     }
                 } else if (input.equals("2")) {
 
-                    System.out.println("Current Money Provided: ");
+                    System.out.println("Current Money Provided: " + moneyHandler.getTotalBalance()); //this will now print the balance to the screen.
                     System.out.println("(1) Feed Money");
                     System.out.println("(2) Select Product");
                     System.out.println("(3) Finish transaction");
                     String productSelection = mainMenuChoice.nextLine();
                     if (productSelection.equals("1")) { //Feed Money
                         System.out.println("Please insert whole dollar amounts.");
-                        Scanner moneyInput = new Scanner(System.in);
-                        BigDecimal totalBalance = new BigDecimal(String.valueOf(moneyInput));
+                        String moneyInput = mainMenuChoice.nextLine(); //multiple scanners can't be going at a time, so we changed this to a String
+                        BigDecimal moneyAsBD = new BigDecimal(moneyInput);
+                        moneyHandler.depositedMoney(moneyAsBD);
                     } else if (productSelection.equals("2")) { // Select Product
                         System.out.println("Please make your selection: ");
-                        Scanner userSelection = new Scanner(System.in);
+                        String userSelection = mainMenuChoice.nextLine(); //changed scanner to string
                         StockItem stockItem = new StockItem();
-//                    StockItem.dispenseItem;
-                        //move to purchase
+                        stockItem.dispenseItem();
                     } else if (productSelection.equals("3")) { //Finish Transaction
+                        moneyHandler.refundedMoney(moneyHandler.getTotalBalance());
                         System.out.println("Thank you for playing");
-                        // break;//exit transaction
+                        break;
                     } else {
                         System.out.println("ugh...this again?? select a NUMBER, 1, 2 or 3.");
 
                     }
                     //move to purchase
                 } else if (input.equals("3")) {
+                    moneyHandler.refundedMoney(moneyHandler.getTotalBalance());
                     System.out.println("Thank you for playing");
                    // break;//exit transaction
                 } else {
