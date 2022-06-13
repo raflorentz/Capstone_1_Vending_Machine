@@ -6,8 +6,6 @@ import java.util.Calendar;
 
 public class MoneyHandler {
     private BigDecimal totalBalance = new BigDecimal("0.00");
-    private BigDecimal transactionTotal;
-    private BigDecimal change;
     private BigDecimal amountRefunded;
 
     private BigDecimal quarter = BigDecimal.valueOf(0.25);
@@ -17,7 +15,7 @@ public class MoneyHandler {
     private int totalQuartersInChange = 0;
     private int totalDimesInChange = 0;
     private int totalNickelsInChange = 0;
-
+    private BigDecimal currentMoney = new BigDecimal(0);
 
 
     public BigDecimal getTotalBalance() {
@@ -28,25 +26,33 @@ public class MoneyHandler {
         totalBalance = totalBalance.add(amountToDeposit);
     }
 
+    public void balanceToReturn(BigDecimal itemPrice) {
+        this.totalBalance = this.totalBalance.subtract(itemPrice);
+    }
+
+    public BigDecimal getCurrentMoney() {
+        return currentMoney;
+    }
 
 
-    public String refundedMoney(BigDecimal totalBalance){
-        BigDecimal calculator = totalBalance;
+    public String refundedMoney(BigDecimal totalBalance) {
 
-        while (calculator.compareTo(BigDecimal.ZERO) > 0) {
-            if (calculator.compareTo(quarter) >= 0) {
+        while (totalBalance.compareTo(BigDecimal.ZERO) >= 0) {//if totalBalance>0 return 1, if totalBalance ==0 return 0, if totalBalance<0 return -1
+            if (totalBalance.compareTo(quarter) >= 0) {
                 totalQuartersInChange++;
-                calculator = calculator.subtract(quarter);
-            } else if (calculator.compareTo(dime) >= 0) {
+                totalBalance = totalBalance.subtract(quarter);
+            } else if (totalBalance.compareTo(dime) >= 0) {
                 totalDimesInChange++;
-                calculator = calculator.subtract(dime);
-            } else if (calculator.compareTo(nickel) >= 0) {
+                totalBalance = totalBalance.subtract(dime);
+            } else if (totalBalance.compareTo(nickel) >= 0) {
                 totalNickelsInChange++;
-                calculator = calculator.subtract(nickel);
+                totalBalance = totalBalance.subtract(nickel);
             }
-        } this.totalBalance = new BigDecimal("0.00");
+        }
+        this.totalBalance = new BigDecimal("0.00");
         String changeMessage = ("Now dispensing change: " + totalQuartersInChange + " quarters, " + totalDimesInChange + " dimes, and " + totalNickelsInChange + " nickels");
         return changeMessage;
     }
+
 
 }
