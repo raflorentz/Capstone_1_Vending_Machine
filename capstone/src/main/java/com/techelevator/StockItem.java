@@ -6,7 +6,7 @@ public class StockItem {
 
    public String itemForSale;
     public BigDecimal itemPrice;
-    public static Integer numberInStock;
+    public Integer numberInStock;
      public String sound;
 
      public StockItem() {
@@ -26,7 +26,7 @@ public class StockItem {
     //for (int i = 5; i > 0; i--)
 
     public void dispenseItem() {
-        if(StockItem.getNumberInStock()  >= 1) {
+        if(getNumberInStock()  >= 1) {
             numberInStock--;
             System.out.println(getSound());
         } else {
@@ -47,7 +47,7 @@ public class StockItem {
     }
 
 
-    public static Integer getNumberInStock() {
+    public Integer getNumberInStock() {
         return numberInStock;
     }
 
