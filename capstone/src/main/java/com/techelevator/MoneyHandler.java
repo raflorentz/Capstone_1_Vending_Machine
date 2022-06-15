@@ -12,9 +12,7 @@ public class MoneyHandler {
     private BigDecimal dime = BigDecimal.valueOf(0.10);
     private BigDecimal nickel = BigDecimal.valueOf(0.05);
 
-    private int totalQuartersInChange = 0;
-    private int totalDimesInChange = 0;
-    private int totalNickelsInChange = 0;
+
     private BigDecimal currentMoney = new BigDecimal(0);
 
 
@@ -36,8 +34,10 @@ public class MoneyHandler {
 
 
     public String refundedMoney(BigDecimal totalBalance) {
-
-        while (totalBalance.compareTo(BigDecimal.ZERO) >= 0) {//if totalBalance>0 return 1, if totalBalance ==0 return 0, if totalBalance<0 return -1
+         int totalQuartersInChange = 0;
+         int totalDimesInChange = 0;
+         int totalNickelsInChange = 0;
+        while (totalBalance.compareTo(BigDecimal.ZERO) > 0) {//if totalBalance>0 return 1, if totalBalance ==0 return 0, if totalBalance<0 return -1
             if (totalBalance.compareTo(quarter) >= 0) {
                 totalQuartersInChange++;
                 totalBalance = totalBalance.subtract(quarter);
@@ -50,7 +50,7 @@ public class MoneyHandler {
             }
         }
         this.totalBalance = new BigDecimal("0.00");
-        String changeMessage = ("Now dispensing change: " + totalQuartersInChange + " quarters, " + totalDimesInChange + " dimes, and " + totalNickelsInChange + " nickels");
+        String changeMessage = "Now dispensing change: " + totalQuartersInChange + " quarters, " + totalDimesInChange + " dimes, and " + totalNickelsInChange + " nickels";
         return changeMessage;
     }
 

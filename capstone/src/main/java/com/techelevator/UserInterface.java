@@ -60,25 +60,25 @@ public class UserInterface {
                     } else if (productSelection.equals("2")) { // Select Product
                         System.out.println("Please make your selection: ");
                         String userSelection = mainMenuChoice.nextLine(); //changed scanner to string
-                        StockItem stockItem = new StockItem();
+                        StockItem stockItem = inventoryReader.createDisplayList().get(userSelection);
+                        moneyHandler.balanceToReturn(stockItem.getItemPrice());
                         stockItem.dispenseItem();
                     } else if (productSelection.equals("3")) { //Finish Transaction
-
-                        moneyHandler.refundedMoney(moneyHandler.getTotalBalance());
-                        System.out.println("Thank you for playing");
-
+                        System.out.println(moneyHandler.refundedMoney(moneyHandler.getTotalBalance()));
+                        System.out.println("GAME OVER");
+                            break;
                     } else {
                         System.out.println("ugh...this again?? select a NUMBER, 1, 2 or 3.");
 
                     }
                     //move to purchase
-                }while (!productSelection.equals("3"));
+                }while (true);
             }
 
             else if (input.equals("3")) {
                 moneyHandler.refundedMoney(moneyHandler.getTotalBalance());
                 System.out.println("Thank you for playing");
-                // break;//exit transaction
+                return;
             } else {
                 System.out.println("ugh...this again?? select a NUMBER, 1, 2 or 3.");
 

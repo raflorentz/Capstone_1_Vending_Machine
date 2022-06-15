@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.nio.channels.ScatteringByteChannel;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class InventoryReader {
 
@@ -24,8 +22,8 @@ public class InventoryReader {
         return stockList;
     }
 
-    private List<StockItem> createDisplayList() {
-        List<StockItem> displayList = new ArrayList<>();
+    public Map<String, StockItem> createDisplayList() {
+        Map<String, StockItem> displayList = new LinkedHashMap<String, StockItem>();
         for (String itemListing : createStockList()) {
             String[] vendItem = itemListing.split("\\|");
 
@@ -37,16 +35,16 @@ public class InventoryReader {
 
             if (category.equals("Chip")) {
                 Chips chips = new Chips(itemForSale, itemPrice);
-                displayList.add(chips);
+                displayList.put(slotID, chips);
             } else if (category.equals("Drink")) {
                 Beverages beverages = new Beverages(itemForSale, itemPrice);
-                displayList.add(beverages);
+                displayList.put(slotID, beverages);
             } else if (category.equals("Gum")) {
                 Gum gum = new Gum(itemForSale, itemPrice);
-                displayList.add(gum);
+                displayList.put(slotID, gum);
             } else if (category.equals("Candy")) {
                 Candy candy = new Candy(itemForSale, itemPrice);
-                displayList.add(candy);
+                displayList.put(slotID, candy);
 
             }
         }

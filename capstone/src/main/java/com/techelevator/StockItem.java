@@ -10,7 +10,7 @@ public class StockItem {
      public String sound;
 
      public StockItem() {
-
+    this.numberInStock = 5;
      }
 
     public StockItem(String itemForSale, BigDecimal itemPrice) {
@@ -20,19 +20,19 @@ public class StockItem {
         this.sound = sound;
     }
 
-    //add method to pull inventory data and update inventory each time a purchase is made.
-    //a for loop that decrements the inventory each time one is purchased.
-    //When the last item in a stock has been bought, the next attempt should return an Out of Stock error.
-    //for (int i = 5; i > 0; i--)
 
     public void dispenseItem() {
         if(getNumberInStock()  >= 1) {
             numberInStock--;
+
             System.out.println(getSound());
         } else {
             System.out.println("SOLD OUT");
         }
-        }
+
+    }
+
+
 
     public String getSound() {
         return sound;

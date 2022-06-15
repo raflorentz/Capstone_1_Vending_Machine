@@ -6,6 +6,23 @@ import java.util.Scanner;
 public class SelectProduct {
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //option 2 on the main menu
 //    Scanner option2menu = new Scanner(System.in);
 //
