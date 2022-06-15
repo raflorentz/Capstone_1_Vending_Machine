@@ -27,6 +27,7 @@ public class UserInterface {
         Scanner mainMenuChoice = new Scanner(System.in);
         InventoryReader inventoryReader = new InventoryReader();
         MoneyHandler moneyHandler = new MoneyHandler();
+        TransactionLog transactionLog = new TransactionLog();
         SelectProduct selectProduct = new SelectProduct();
         String input;
         String productSelection;
@@ -57,13 +58,19 @@ public class UserInterface {
                         String moneyInput = mainMenuChoice.nextLine(); //multiple scanners can't be going at a time, so we changed this to a String
                         BigDecimal moneyAsBD = new BigDecimal(moneyInput);
                         moneyHandler.depositedMoney(moneyAsBD);
+                        String feedMoney = "FEED MONEY";
+                        transactionLog.trxLog(feedMoney, moneyAsBD, moneyHandler.getTotalBalance());
                     } else if (productSelection.equals("2")) { // Select Product
                         System.out.println("Please make your selection: ");
                         String userSelection = mainMenuChoice.nextLine(); //changed scanner to string
                         StockItem stockItem = inventoryReader.createDisplayList().get(userSelection);
                         moneyHandler.balanceToReturn(stockItem.getItemPrice());
+                        transactionLog.trxLog(stockItem.itemForSale, stockItem.getItemPrice(), moneyHandler.getTotalBalance());
                         stockItem.dispenseItem();
+                        String slotChoice = mainMenuChoice.nextLine();
                     } else if (productSelection.equals("3")) { //Finish Transaction
+                        String giveChange = "GIVE CHANGE";
+                        transactionLog.trxLog(giveChange, moneyHandler.getTotalBalance(), BigDecimal.valueOf(0));
                         System.out.println(moneyHandler.refundedMoney(moneyHandler.getTotalBalance()));
                         System.out.println("GAME OVER");
                             break;

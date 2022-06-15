@@ -28,10 +28,6 @@ public class MoneyHandler {
         this.totalBalance = this.totalBalance.subtract(itemPrice);
     }
 
-    public BigDecimal getCurrentMoney() {
-        return currentMoney;
-    }
-
 
     public String refundedMoney(BigDecimal totalBalance) {
          int totalQuartersInChange = 0;
@@ -53,6 +49,4 @@ public class MoneyHandler {
         String changeMessage = "Now dispensing change: " + totalQuartersInChange + " quarters, " + totalDimesInChange + " dimes, and " + totalNickelsInChange + " nickels";
         return changeMessage;
     }
-
-
 }
