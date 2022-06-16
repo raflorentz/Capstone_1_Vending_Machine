@@ -1,5 +1,5 @@
 package com.techelevator;
-
+//  TODO SET CLASS AS ABSTRACT AS WELL
 import java.math.BigDecimal;
 
 public class StockItem {
@@ -8,7 +8,7 @@ public class StockItem {
     public BigDecimal itemPrice;
     public Integer numberInStock;
     public String sound;
-    MoneyHandler moneyHandler = new MoneyHandler();
+
 
     public StockItem() {
         this.numberInStock = 5;
@@ -34,7 +34,7 @@ public class StockItem {
 
 
     public String getSound() {
-        return sound;
+        return sound; //TODO can be an abstract method
     }
 
     public String getItemForSale() {
