@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Scanner;
 
 
@@ -62,12 +63,15 @@ public class UserInterface {
                         transactionLog.trxLog(feedMoney, moneyAsBD, moneyHandler.getTotalBalance());
                     } else if (productSelection.equals("2")) { // Select Product
                         System.out.println("Please make your selection: ");
+                        if (moneyHandler.getTotalBalance().compareTo(BigDecimal.ZERO) <= 0){
+                            System.out.println("Please insert money before you make your selection.");
+                        } else{
                         String userSelection = mainMenuChoice.nextLine(); //changed scanner to string
                         StockItem stockItem = inventoryReader.createDisplayList().get(userSelection);
                         moneyHandler.balanceToReturn(stockItem.getItemPrice());
                         transactionLog.trxLog(stockItem.itemForSale, stockItem.getItemPrice(), moneyHandler.getTotalBalance());
                         stockItem.dispenseItem();
-                        String slotChoice = mainMenuChoice.nextLine();
+                        }
                     } else if (productSelection.equals("3")) { //Finish Transaction
                         String giveChange = "GIVE CHANGE";
                         transactionLog.trxLog(giveChange, moneyHandler.getTotalBalance(), BigDecimal.valueOf(0));
@@ -78,7 +82,6 @@ public class UserInterface {
                         System.out.println("ugh...this again?? select a NUMBER, 1, 2 or 3.");
 
                     }
-                    //move to purchase
                 }while (true);
             }
 

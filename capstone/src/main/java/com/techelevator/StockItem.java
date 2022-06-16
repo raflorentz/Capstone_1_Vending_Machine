@@ -4,14 +4,15 @@ import java.math.BigDecimal;
 
 public class StockItem {
 
-   public String itemForSale;
+    public String itemForSale;
     public BigDecimal itemPrice;
     public Integer numberInStock;
-     public String sound;
+    public String sound;
+    MoneyHandler moneyHandler = new MoneyHandler();
 
-     public StockItem() {
-    this.numberInStock = 5;
-     }
+    public StockItem() {
+        this.numberInStock = 5;
+    }
 
     public StockItem(String itemForSale, BigDecimal itemPrice) {
         this.itemForSale = itemForSale;
@@ -22,16 +23,14 @@ public class StockItem {
 
 
     public void dispenseItem() {
-        if(getNumberInStock()  >= 1) {
+        if (getNumberInStock() >= 1) {
             numberInStock--;
-
             System.out.println(getSound());
-        } else {
+        } else{
             System.out.println("SOLD OUT");
         }
 
     }
-
 
 
     public String getSound() {
@@ -51,9 +50,9 @@ public class StockItem {
         return numberInStock;
     }
 
-   // public File getInventoryFile() {
-     //   return inventoryFile;
-   // }
+    // public File getInventoryFile() {
+    //   return inventoryFile;
+    // }
 
     public void setItemForSale(String itemForSale) {
         this.itemForSale = itemForSale;

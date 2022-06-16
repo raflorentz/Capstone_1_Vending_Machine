@@ -6,14 +6,10 @@ import java.util.Calendar;
 
 public class MoneyHandler {
     private BigDecimal totalBalance = new BigDecimal("0.00");
-    private BigDecimal amountRefunded;
 
     private BigDecimal quarter = BigDecimal.valueOf(0.25);
     private BigDecimal dime = BigDecimal.valueOf(0.10);
     private BigDecimal nickel = BigDecimal.valueOf(0.05);
-
-
-    private BigDecimal currentMoney = new BigDecimal(0);
 
 
     public BigDecimal getTotalBalance() {
